@@ -1,0 +1,13 @@
+plugins:
+  - &ecr_plugin
+    ecr#v2.1.0:
+      login: true
+
+steps:
+  - label: "Build Sonar-Stack"
+    key: build-sonar-stack
+    command:
+      - docker build -t peakon/docker-detect-secrets .
+      - ecr-push -a
+    plugins:
+      - *ecr_plugin
