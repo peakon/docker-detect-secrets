@@ -4,5 +4,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends git build-essen
 RUN pip install detect-secrets[word_list]
 
 WORKDIR /usr/src/app
-COPY .secrets.baseline .
+COPY .secrets.baseline /usr/src
 ENTRYPOINT ["detect-secrets-hook", "--verbose"]
