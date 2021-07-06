@@ -2,7 +2,9 @@ plugins:
   - &ecr_plugin
     ecr#v2.1.0:
       login: true
-
+  - &docker_login_plugin
+    docker-login#v2.0.1:
+      username: peakbot
 steps:
   - label: "Build Secret Scanner"
     key: build-secret-scanner
@@ -11,4 +13,5 @@ steps:
       - docker build -t peakon/docker-detect-secrets .
       - ecr-push -a
     plugins:
+      - *docker_login_plugin
       - *ecr_plugin
