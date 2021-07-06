@@ -8,6 +8,8 @@ plugins:
 steps:
   - label: "Build Secret Scanner"
     key: build-secret-scanner
+    agents:
+      queue: docker-images
     command:
       - echo "test"
       - docker build -t peakon/docker-detect-secrets .
