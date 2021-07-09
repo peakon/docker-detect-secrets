@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+NAME="public.ecr.aws/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
+
+docker build --build-arg -t ${NAME}:latest .
+
+if [[ "${BUILDKITE_BRANCH}" =~ ^(master)$ ]]; then
+  docker push "${NAME}:latest"
+fi
