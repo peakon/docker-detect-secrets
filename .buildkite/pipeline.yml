@@ -11,9 +11,7 @@ steps:
     agents:
       queue: docker-images
     command:
-      - echo "test"
-      - docker build -t peakon/docker-detect-secrets .
-      - ecr-push -a
+      - ./../scripts/docker-build -a
     plugins:
       - *docker_login_plugin
       - *ecr_plugin
