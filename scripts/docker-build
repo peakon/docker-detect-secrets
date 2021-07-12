@@ -24,7 +24,7 @@ done
 NAME="public.ecr.aws/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
 
 docker build --build-arg -t ${NAME}:latest .
-docker build --build-arg -t ${NAME}:${BUILDKITE_COMMIT}
+docker build --build-arg -t ${NAME}:${BUILDKITE_COMMIT} .
 
 if [[ "${BUILDKITE_BRANCH}" =~ ^(master)$ || -n "${PUSH_ALL_BRANCHES:-}" ]]; then
   echo "--- Push Docker image to ECR"
