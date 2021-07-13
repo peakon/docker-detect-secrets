@@ -5,4 +5,4 @@ RUN pip install detect-secrets[word_list]
 
 WORKDIR /usr/src/app
 COPY scripts/git_api_curl.sh /usr/src/custom-scripts/git_api_curl.sh
-ENTRYPOINT ["detect-secrets-hook", "--verbose"]
+ENTRYPOINT ["exec", "$@"]
