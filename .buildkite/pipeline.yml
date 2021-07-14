@@ -1,0 +1,17 @@
+plugins:
+  - &ecr_plugin
+    ecr#v2.1.0:
+      login: true
+  - &docker_login_plugin
+    docker-login#v2.0.1:
+      username: peakbot
+steps:
+  - label: "Build Secret Scanner"
+    key: build-secret-scanner
+    agents:
+      queue: docker-images
+    command:
+      - scripts/docker-build -a
+    plugins:
+      - *docker_login_plugin
+      - *ecr_plugin
