@@ -6,5 +6,5 @@ RUN pip install detect-secrets[word_list]
 WORKDIR /usr/src/app
 COPY scripts/git_api_curl.sh /usr/src/custom-scripts/git_api_curl.sh
 COPY scripts/pre-setup.sh /usr/src/custom-scripts/pre-setup.sh
-RUN /usr/src/custom-scripts/pre-setup.sh
+ENTRYPOINT [ "/usr/src/custom-scripts/pre-setup.sh" ]
 CMD ["/bin/bash"]
