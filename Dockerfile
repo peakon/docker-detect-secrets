@@ -5,4 +5,5 @@ RUN pip install detect-secrets[word_list]
 
 WORKDIR /usr/src/app
 COPY scripts/git_api_curl.sh /usr/src/custom-scripts/git_api_curl.sh
+COPY secrets-config/.secrets-baseline /usr/src/secrets-config/.secrets-baseline
 CMD ["/bin/bash"]
