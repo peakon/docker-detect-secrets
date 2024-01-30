@@ -1,6 +1,6 @@
 plugins:
   - &ecr_plugin
-    ecr#v2.1.0:
+    ecr#v2.7.0:
       login: true
   - &docker_login_plugin
     docker-login#v2.0.1:
