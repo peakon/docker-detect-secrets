@@ -13,7 +13,7 @@ steps:
     agents:
       queue: docker-images
     command:
-      - scripts/docker-build -a
+      - scripts/docker-build
     plugins:
       - *docker_login_plugin
       - *ecr_plugin
