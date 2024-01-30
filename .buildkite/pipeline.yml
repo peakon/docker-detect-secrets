@@ -4,7 +4,9 @@ plugins:
       login: true
   - &docker_login_plugin
     docker-login#v2.0.1:
-      username: peakbot
+      username: peakon-buildadm
+      password-env: BUILDKITE_ARTIFACTORY_PASSWORD
+      server: docker-dev-artifactory.workday.com
 steps:
   - label: "Build Secret Scanner"
     key: build-secret-scanner
