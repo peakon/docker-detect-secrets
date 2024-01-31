@@ -21,14 +21,14 @@ while getopts ":p:a" opt; do
   esac
 done
 
-NAME="public.ecr.aws/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
+NAME="docker-dev-artifactory.workday.com/peakon/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
 echo ${NAME}
 
 docker build -t ${NAME}:${BUILDKITE_BRANCH}-latest .
 docker build -t ${NAME}:${BUILDKITE_BRANCH}-${BUILDKITE_COMMIT} .
 
 if [[ "${BUILDKITE_BRANCH}" =~ ^(master)$ || -n "${PUSH_ALL_BRANCHES:-}" ]]; then
-  echo "--- Push Docker image to ECR"
+  echo "--- Push Docker image to Artifactory"
   docker push "${NAME}:${BUILDKITE_BRANCH}-latest"
   docker push "${NAME}:${BUILDKITE_BRANCH}-${BUILDKITE_COMMIT}"
   echo -e "Pushed tag: \033[33m${NAME}:${BUILDKITE_BRANCH}-latest\033[0m"
