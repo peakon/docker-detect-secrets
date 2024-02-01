@@ -21,7 +21,7 @@ while getopts ":p:a" opt; do
   esac
 done
 
-NAME="docker-dev-artifactory.workday.com/peakon/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
+NAME="docker-dev-artifactory.workday.com/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}"
 echo ${NAME}
 
 docker build -t ${NAME}:${BUILDKITE_BRANCH}-latest .
